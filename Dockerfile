@@ -1,7 +1,7 @@
 FROM ghcr.io/astral-sh/uv:0.11.6-python3.13-trixie
 
 ARG HERMES_REF=main
-ARG HERMES_WEBUI_REF=v0.50.278
+ARG HERMES_WEBUI_REF=main
 
 ENV PYTHONUNBUFFERED=1 \
     PLAYWRIGHT_BROWSERS_PATH=/opt/hermes/.playwright \
@@ -134,7 +134,7 @@ RUN chmod -R a+rX /opt/hermes
 WORKDIR /opt/hermes-webui
 
 RUN git init . && \
-    git remote add origin https://github.com/nesquena/hermes-webui.git && \
+    git remote add origin https://github.com/marco-quintella/hermes-webui.git && \
     (git fetch --depth 1 origin "refs/tags/${HERMES_WEBUI_REF}:refs/tags/${HERMES_WEBUI_REF}" || \
      git fetch --depth 1 origin "${HERMES_WEBUI_REF}") && \
     git checkout --detach FETCH_HEAD && \
