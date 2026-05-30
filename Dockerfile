@@ -118,10 +118,10 @@ RUN git init . && \
 
 ENV npm_config_install_links=false
 
-RUN export PATH="/home/hermes/.nvm/versions/node/v22/bin:$PATH" && \
+RUN /bin/bash -c "source /home/hermes/.nvm/nvm.sh && \
     npm install --prefer-offline --no-audit && \
     npx playwright install --with-deps chromium --only-shell && \
-    npm cache clean --force
+    npm cache clean --force"
 
 RUN uv venv && \
     uv pip install --no-cache-dir -e ".[all,messaging]"
