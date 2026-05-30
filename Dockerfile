@@ -15,7 +15,6 @@ ENV PYTHONUNBUFFERED=1 \
 # ──────────────────────────────────────────────
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-      apt-transport-https \
       build-essential \
       ca-certificates \
       curl \
@@ -32,7 +31,6 @@ RUN apt-get update && \
       python3 \
       python3-dev \
       ripgrep \
-      software-properties-common \
       tini \
       wget && \
     rm -rf /var/lib/apt/lists/*
