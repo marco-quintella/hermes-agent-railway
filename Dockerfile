@@ -110,11 +110,7 @@ RUN curl -fsSL https://railway.app/install.sh | bash
 # ──────────────────────────────────────────────
 WORKDIR /opt/hermes
 
-RUN git init . && \
-    git remote add origin https://github.com/NousResearch/hermes-agent.git && \
-    (git fetch --depth 1 origin "${HERMES_REF}" || \
-     git fetch --depth 1 origin "refs/tags/${HERMES_REF}:refs/tags/${HERMES_REF}") && \
-    git checkout --detach FETCH_HEAD
+RUN git clone --depth 1 https://github.com/NousResearch/hermes-agent.git /opt/hermes
 
 ENV npm_config_install_links=false
 
@@ -133,12 +129,8 @@ RUN chmod -R a+rX /opt/hermes
 # ──────────────────────────────────────────────
 WORKDIR /opt/hermes-webui
 
-RUN git init . && \
-    git remote add origin https://github.com/marco-quintella/hermes-webui.git && \
-    (git fetch --depth 1 origin "refs/tags/${HERMES_WEBUI_REF}:refs/tags/${HERMES_WEBUI_REF}" || \
-     git fetch --depth 1 origin "${HERMES_WEBUI_REF}") && \
-    git checkout --detach FETCH_HEAD && \
-    uv pip install --python /opt/hermes/.venv/bin/python --no-cache-dir -r requirements.txt && \
+RUN git clone --depth 1 https://github.com/marco-quintella/hermes-webui.git /opt/hermes-webui && \
+    uv pip install --python /opt/hermes/.venv/bin/python --no-cache-dir -r /opt/hermes-webui/requirements.txt && \
     chmod -R a+rX /opt/hermes-webui
 
 RUN uv pip install --python /opt/hermes/.venv/bin/python --no-cache-dir \
