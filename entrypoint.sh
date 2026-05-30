@@ -3,7 +3,7 @@ set -euo pipefail
 
 export HERMES_HOME="${HERMES_HOME:-/data}"
 export PORT="${PORT:-8080}"
-export PATH="/opt/hermes/.venv/bin:/data/.local/bin:${PATH}"
+export PATH="/opt/hermes/.venv/bin:/data/.local/bin:/home/hermes/.nvm/versions/node/v22/bin:/home/hermes/.railway/bin:/usr/local/bin:${PATH}"
 export PYTHONPATH="/opt/hermes-railway:/opt/hermes-webui:/opt/hermes:${PYTHONPATH:-}"
 
 # Point the hermes user's $HOME at the persistent /data volume. Railway only
