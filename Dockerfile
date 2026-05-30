@@ -103,7 +103,7 @@ RUN echo '[ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh"' >> /home/hermes/.
 # ──────────────────────────────────────────────
 # Railway CLI — https://docs.railway.app/guides/cli
 # ──────────────────────────────────────────────
-RUN curl -fsSL https://railway.app/install.sh | sh
+RUN curl -fsSL https://railway.app/install.sh | bash
 
 # ──────────────────────────────────────────────
 # Hermes Agent
